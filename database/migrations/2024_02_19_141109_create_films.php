@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255)->nullable(false);
-            $table->text('description')->nullable();
-            $table->year('release_year')->nullable();
-            $table->bigInteger('language_id')->unsigned()->nullable(false);
-            $table->tinyInteger('original_language_id')->unsigned()->nullable();
-            $table->tinyInteger('rental_duration')->unsigned()->nullable(false)->default(3);
-            $table->decimal('rental_rate', 4, 2)->nullable(false)->default(4.99);
+            $table->string('title', 50)->nullable(false);
+            $table->year('release_year', 4)->nullable();
             $table->smallInteger('length')->unsigned()->nullable();
-            $table->decimal('replacement_cost', 5, 2)->nullable(false)->default(19.99);
+            $table->text('description')->nullable();
             $table->enum('rating', ['G','PG','PG-13','R','NC-17'])->default('G');
+            $table->bigInteger('language_id')->unsigned()->nullable(false);
             $table->set('special_features', ['Trailers','Commentaries','Deleted Scenes','Behind the Scenes'])->nullable();
+            $table->string('image', 40)->nullable(false);
             $table->timestamps();
         });
     }
