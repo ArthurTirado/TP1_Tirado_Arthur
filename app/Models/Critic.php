@@ -9,11 +9,10 @@ class Critic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'login',
-        'password',
-        'email',
-        'last_name',
-        'first_name',
+        'user_id',
+        'film_id',
+        'score',
+        'comment',
     ];
     public function films()
     {

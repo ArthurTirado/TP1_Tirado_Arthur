@@ -19,13 +19,10 @@ class CriticFactory extends Factory
      */
     public function definition(): array
     {
-         $faker = Faker::create();
+        $faker = Faker::create();
         return [
-            'login'=> $faker->text(10),
-            'password'=> $faker->text(10),
-            'email'=> $faker->text(10),
-            'last_name'=> $faker->text(10),
-            'first_name'=> $faker->text(10),
+            'score'=> $faker->randomFloat(1, 1, 10),
+            'comment'=> $faker->text(10),
         ];
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Critic;
+use App\Models\User;
+use App\Models\Film;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,5 +21,6 @@ class DatabaseSeeder extends Seeder
             ActorSeeder::class,
             FilmActorSeeder::class
         ]);
+        User::factory(10)->has(Critic::factory(3)->has(Film::factory(3)))->create();
     }
 }

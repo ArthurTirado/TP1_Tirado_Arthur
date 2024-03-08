@@ -24,8 +24,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = Faker::create();
+
         return [
-            'login' => $faker->userName,
+            'login' => $faker->text(10),
             'password' => Hash::make('password'),
             'email' => $faker->unique()->safeEmail,
             'first_name' => $faker->firstName,
