@@ -15,9 +15,13 @@ class Critic extends Model
         'last_name',
         'first_name',
     ];
-    public function critics()
+    public function films()
     {
-        return $this->belongsTo('App\Models\Film');
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(Film::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }

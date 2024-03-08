@@ -44,7 +44,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function users()
+    public function critics()
     {
         return $this->hasMany('App\Models\Critic');
     }
