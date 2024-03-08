@@ -9,20 +9,20 @@ class Film extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'description',
+        'login',
         'release_year',
-        'language_id',
-        'original_language_id',
-        'rental_duration',
-        'rental_rate',
         'length',
-        'replacement_cost',
+        'description',
         'rating',
+        'language_id',
         'special_features',
+        'image',
     ];
-    public function languages()
+    public function languages(): BelongsToMany
     {
         return $this->belongsTo('App\Models\Language');
+        return $this->hasMany('App\Models\Crtitc');
+        return $this->belongsToMany(Actor::class);
     }
+    
 }
