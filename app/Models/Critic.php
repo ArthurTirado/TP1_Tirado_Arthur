@@ -9,15 +9,18 @@ class Critic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'login',
-        'password',
-        'email',
-        'last_name',
-        'first_name',
+        'user_id',
+        'film_id',
+        'score',
+        'comment',
     ];
-    public function critics()
+    public function films()
     {
-        return $this->belongsTo('App\Models\Film');
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(Film::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }
