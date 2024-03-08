@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Critic;
+use App\Models\User;
+use App\Models\Film;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             FilmSeeder::class,
-            LanguagesSeeder::class
+            LanguagesSeeder::class,
+            ActorSeeder::class,
+            FilmActorSeeder::class
         ]);
+        User::factory(10)->has(Critic::factory(3))->create();
     }
 }
