@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ActorResource extends JsonResource
+class CriticResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,10 @@ class ActorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'last_name' => $this->last_name,
-            'first_name' => $this->first_name,
-            'birthdate' => $this->birthdate,
-        ];   
+            'user_id' => $this->user_id,
+            'film_id' => $this->film_id,
+            'score' => $this->score,
+            'comment' => $this->comment,
+        ];    
     }
 }

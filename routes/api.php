@@ -24,8 +24,9 @@ Route::get('/films/{id}','App\Http\Controllers\FilmController@show');
 #Route 2
 Route::get('/films/{id}/actors','App\Http\Controllers\FilmActorController@index');
 Route::get('/films/{id}/actors/{actorId}','App\Http\Controllers\FilmActorController@show');
-
-
+#Route 3
+Route::get('/films/{id}/critics','App\Http\Controllers\FilmCriticController@index');
+Route::get('/films/{id}/critics/{criticId}','App\Http\Controllers\FilmCriticController@show');
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
