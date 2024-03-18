@@ -14,7 +14,6 @@ class FilmController extends Controller
     {
         try{
             return (new FilmResource(Film::findOrFail($id)))->response()->setStatusCode(200);
-            
         }
     
         catch(Exception $ex)
