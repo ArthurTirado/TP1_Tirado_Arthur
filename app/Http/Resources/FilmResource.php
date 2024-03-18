@@ -17,9 +17,12 @@ class FilmResource extends JsonResource
         return [
             'title' => $this->title,
             'release_year' => $this->release_year,
+            'length' => $this->length,
+            'description' => $this->description,
+            'rating' => $this->rating,
             'language_id' => $this->language_id,
-            'rental_rate' => $this->rental_rate,
-            'length' => $this->length
+            'special_features' => $this->rental_rate,
+            'image' => $this->image,
         ];
     }
 }
