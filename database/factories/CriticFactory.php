@@ -22,6 +22,7 @@ class CriticFactory extends Factory
         $faker = Faker::create();
         return [
             'film_id'=>$faker->numberBetween(1, 100),
+            'user_id'=>$faker->numberBetween(1, 10),
             'score'=> $faker->randomFloat(1, 1, 10),
             'comment'=> $faker->text(10),
         ];

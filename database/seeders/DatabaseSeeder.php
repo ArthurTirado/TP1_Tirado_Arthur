@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
             FilmActorSeeder::class
         ]);
         User::factory(10)->has(Critic::factory(3))->create();
+        Film::factory(10)->has(Critic::factory(3))->create();
     }
 }
