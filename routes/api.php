@@ -27,6 +27,8 @@ Route::get('/films/{id}/actors/{actorId}','App\Http\Controllers\FilmActorControl
 #Route 3
 Route::get('/films/{id}/critics','App\Http\Controllers\FilmCriticController@index');
 Route::get('/films/{id}/critics/{criticId}','App\Http\Controllers\FilmCriticController@show');
+#Route 4
+Route::post('/users','App\Http\Controllers\UserController@store');
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
