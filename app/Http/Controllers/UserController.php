@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\StoreUserRequest; 
+use App\Http\Requests\UpdateUserRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -16,7 +18,17 @@ class UserController extends Controller
             return (new UserResource($user))->response()->setStatusCode(201);
         }
         catch(Exception $ex){
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+    public function update(UpdateUserRequest $request, $id){
+        try {
+            $user = new UserResource(User::findOrFail($id));
+            $user->update($request->validated());
+            return (new UserResource($user))->response()->setStatusCode(200);
+        } 
+        catch (Exception $ex) {
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }
