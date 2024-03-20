@@ -31,6 +31,8 @@ Route::get('/films/{id}/critics/{criticId}','App\Http\Controllers\FilmCriticCont
 Route::post('/users','App\Http\Controllers\UserController@store');
 #Route 5
 Route::put('/users/{id}','App\Http\Controllers\UserController@update');
+#Route 6
+Route::delete('/critics/{id}','App\Http\Controllers\CriticController@destroy');
 
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
