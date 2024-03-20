@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Actor;
 use App\Models\Film;
 use App\Http\Resources\ActorResource;
+use Symfony\Component\HttpFoundation\Response;
 class FilmActorController extends Controller
+
 {
     public function show($id, $actorId)
     {
@@ -18,7 +20,7 @@ class FilmActorController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
     public function index($id)
@@ -30,7 +32,7 @@ class FilmActorController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Http\Resources\LanguageResource;
+use Symfony\Component\HttpFoundation\Response;
 
 class LanguageController extends Controller
 {
@@ -15,7 +16,7 @@ class LanguageController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
     public function index()
@@ -26,7 +27,7 @@ class LanguageController extends Controller
         
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

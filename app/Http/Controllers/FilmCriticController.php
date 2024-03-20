@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Critic;
 use App\Models\Film;
 use App\Http\Resources\CriticResource;
+use Symfony\Component\HttpFoundation\Response;
 
 class FilmCriticController extends Controller
 {
@@ -19,7 +20,7 @@ class FilmCriticController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
     public function index($id)
@@ -31,7 +32,7 @@ class FilmCriticController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }
