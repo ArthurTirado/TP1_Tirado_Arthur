@@ -33,7 +33,8 @@ Route::post('/users','App\Http\Controllers\UserController@store');
 Route::put('/users/{id}','App\Http\Controllers\UserController@update');
 #Route 6
 Route::delete('/critics/{id}','App\Http\Controllers\CriticController@destroy');
-
+#Route 7
+Route::get('/films/{id}/score','App\Http\Controllers\FilmController@avgScore');
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
