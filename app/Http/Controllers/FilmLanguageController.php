@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Language;
 use App\Http\Resources\FilmResource;
+use Symfony\Component\HttpFoundation\Response;
 
 class FilmLanguageController extends Controller
 {
@@ -19,7 +20,7 @@ class FilmLanguageController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
     public function index($id)
@@ -31,7 +32,7 @@ class FilmLanguageController extends Controller
         }
         catch(Exception $ex)
         {
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
     public function destroy($id)
@@ -42,7 +43,7 @@ class FilmLanguageController extends Controller
             return response()->noContent();
         }
         catch(Exception $ex){
-            abort(500, 'Server error');
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         
     }
