@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+#Route 9
+Route::get('films/search', 'App\Http\Controllers\FilmController@filmSearch');
 #Route 1
 Route::get('/films','App\Http\Controllers\FilmController@index');
 Route::get('/films/{id}','App\Http\Controllers\FilmController@show');

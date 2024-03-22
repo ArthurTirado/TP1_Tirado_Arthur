@@ -10,6 +10,7 @@ use App\Http\Requests\StoreFilmRequest;
 use Symfony\Component\HttpFoundation\Response;
 class FilmController extends Controller
 {
+
     public function show($id)
     {
         try{
@@ -67,4 +68,35 @@ class FilmController extends Controller
             abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+    public function filmSearch(Request $request)
+    {
+    try {
+        $query = Film::query();
+
+        if ($request->has('keyword')) {
+            $keyword = $request->input('keyword');
+            $query->where('title', 'like', "%$keyword%");
+        }
+
+        if ($request->has('rating')) {
+            $rating = $request->input('rating');
+            $query->where('rating', $rating);
+        }
+
+        if ($request->has('minLength')) {
+            $minLength = $request->input('minLength');
+            $query->where('length', '>=', $minLength);
+        }
+
+        if ($request->has('maxLength')) {
+            $maxLength = $request->input('maxLength');
+            $query->where('length', '<=', $maxLength);
+        }
+        $films = $query->paginate(20);
+    return FilmResource::collection($films)->response()->setStatusCode(Response::HTTP_OK);
+    } catch (Exception $ex) {
+        abort(Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
 }
