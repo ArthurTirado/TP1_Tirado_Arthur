@@ -35,6 +35,8 @@ Route::put('/users/{id}','App\Http\Controllers\UserController@update');
 Route::delete('/critics/{id}','App\Http\Controllers\CriticController@destroy');
 #Route 7
 Route::get('/films/{id}/score','App\Http\Controllers\FilmController@avgScore');
+#Route 8
+Route::get('/users/{id}/favoriteLanguage','App\Http\Controllers\UserController@favoriteLanguage');
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
