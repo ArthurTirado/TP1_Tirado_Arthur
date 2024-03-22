@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
@@ -19,17 +21,17 @@ class Film extends Model
         'special_features',
         'image',
     ];
-    public function languages(): BelongsTo
+    public function language()
     {
         return $this->belongsTo(Language::class);
     }
 
-    public function critics(): HasMany
+    public function critics()
     {
         return $this->hasMany(Critic::class);
     }
 
-    public function actors(): BelongsToMany
+    public function actors()
     {
         return $this->belongsToMany(Actor::class);
     }

@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Actor;
+use App\Models\Critic;
 use App\Models\Film;
-use App\Http\Resources\ActorResource;
+use App\Http\Resources\CriticResource;
 use Symfony\Component\HttpFoundation\Response;
-class FilmActorController extends Controller
 
+class FilmCriticController extends Controller
 {
-    public function show($id, $actorId)
+    public function show($id, $criticId)
     {
         try
         {
             $film = Film::findOrFail($id);
-            return (new ActorResource($film->actors[$actorId-1]))->response()->setStatusCode(200);
+            return (new CriticResource($film->critics[$criticId-1]))->response()->setStatusCode(200);
             
         }
         catch(Exception $ex)
@@ -28,7 +28,7 @@ class FilmActorController extends Controller
         try
         {
             $film = Film::findOrFail($id);
-            return ActorResource::collection($film->actors)->response()->setStatusCode(200);    
+            return CriticResource::collection($film->critics)->response()->setStatusCode(200);    
         }
         catch(Exception $ex)
         {

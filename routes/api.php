@@ -17,15 +17,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+#Route 9
+Route::get('films/search', 'App\Http\Controllers\FilmController@filmSearch');
 #Route 1
 Route::get('/films','App\Http\Controllers\FilmController@index');
 Route::get('/films/{id}','App\Http\Controllers\FilmController@show');
 #Route 2
 Route::get('/films/{id}/actors','App\Http\Controllers\FilmActorController@index');
 Route::get('/films/{id}/actors/{actorId}','App\Http\Controllers\FilmActorController@show');
-
-
+#Route 3
+Route::get('/films/{id}/critics','App\Http\Controllers\FilmCriticController@index');
+Route::get('/films/{id}/critics/{criticId}','App\Http\Controllers\FilmCriticController@show');
+#Route 4
+Route::post('/users','App\Http\Controllers\UserController@store');
+#Route 5
+Route::put('/users/{id}','App\Http\Controllers\UserController@update');
+#Route 6
+Route::delete('/critics/{id}','App\Http\Controllers\CriticController@destroy');
+#Route 7
+Route::get('/films/{id}/score','App\Http\Controllers\FilmController@avgScore');
+#Route 8
+Route::get('/users/{id}/favoriteLanguage','App\Http\Controllers\UserController@favoriteLanguage');
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
