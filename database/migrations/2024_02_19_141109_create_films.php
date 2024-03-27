@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('rating', ['G','PG','PG-13','R','NC-17'])->default('G');
             $table->bigInteger('language_id')->unsigned()->nullable(false);
-            $table->set('special_features', ['Trailers','Commentaries','Deleted Scenes','Behind the Scenes'])->nullable();
-            $table->string('image', 40)->nullable(false);
+            $table->string('special_features', 200)->nullable();
+            $table->string('image', 40)->nullable();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Models\Actor;
 use App\Models\Film;
 use App\Http\Resources\ActorResource;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class FilmActorController extends Controller
 
 {
@@ -15,8 +16,17 @@ class FilmActorController extends Controller
         try
         {
             $film = Film::findOrFail($id);
-            return (new ActorResource($film->actors[$actorId-1]))->response()->setStatusCode(200);
-            
+            $actors = $film->actors;
+
+            if (!isset($actors[$actorId - 1])) {
+                throw new NotFoundHttpException("Actor not found for the given film.");
+            }
+
+            return (new ActorResource($actors[$actorId - 1]))->response()->setStatusCode(Response::HTTP_OK);
+        }
+        catch (NotFoundHttpException $ex) 
+        {
+            abort(Response::HTTP_NOT_FOUND);
         }
         catch(Exception $ex)
         {

@@ -27,7 +27,6 @@ Route::get('/films/{id}/actors','App\Http\Controllers\FilmActorController@index'
 Route::get('/films/{id}/actors/{actorId}','App\Http\Controllers\FilmActorController@show');
 #Route 3
 Route::get('/films/{id}/critics','App\Http\Controllers\FilmCriticController@index');
-Route::get('/films/{id}/critics/{criticId}','App\Http\Controllers\FilmCriticController@show');
 #Route 4
 Route::post('/users','App\Http\Controllers\UserController@store');
 #Route 5
@@ -41,7 +40,6 @@ Route::get('/users/{id}/favoriteLanguage','App\Http\Controllers\UserController@f
 
 Route::get('/languages','App\Http\Controllers\LanguageController@index');
 Route::get('/languages/{id}','App\Http\Controllers\LanguageController@show');
-Route::get('/languages/{id}/averageRentalRate','App\Http\Controllers\FilmController@averageRentalRate');
 Route::get('/languages/{id}/films/','App\Http\Controllers\FilmLanguageController@index');
 Route::get('/languages/{id}/films/{filmId}','App\Http\Controllers\FilmLanguageController@show');
 
