@@ -27,7 +27,7 @@ class UserFactory extends Factory
         $faker = Faker::create();
 
         return [
-            'login' => $faker->text(10),
+            'login' => Str::random(10),
             'password' => Hash::make('password'),
             'email' => $faker->unique()->safeEmail,
             'first_name' => $faker->firstName,

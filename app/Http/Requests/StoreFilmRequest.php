@@ -23,8 +23,13 @@ class StoreFilmRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'release_year' => 'required',
-            'language_id' => 'required'
+            'release_year' => 'nullable',
+            'length' => 'nullable',
+            'description' => 'nullable',
+            'rating' => 'nullable',
+            'language_id' => 'required',
+            'special_features' => 'nullable',
+            'image' => 'nullable'
         ];
     }
 }

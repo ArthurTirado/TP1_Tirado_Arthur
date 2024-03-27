@@ -10,7 +10,6 @@ use App\Http\Requests\StoreFilmRequest;
 use Symfony\Component\HttpFoundation\Response;
 class FilmController extends Controller
 {
-
     public function show($id)
     {
         try{
@@ -25,7 +24,7 @@ class FilmController extends Controller
     public function index()
     {
         try{
-            return FilmResource::collection(Film::paginate(10))->response()->setStatusCode(200);
+            return FilmResource::collection(Film::paginate(FILMS_PAGINATION))->response()->setStatusCode(200);
         }
     
         catch(Exception $ex)
@@ -39,17 +38,6 @@ class FilmController extends Controller
             return (new FilmResource($film))->response()->setStatusCode(Response::HTTP_CREATED);
         }
         catch(Exception $ex){
-            abort(Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
-    public function averageRentalRate($language_id)
-    {
-        try {
-            $avg = Film::where('language_id', $language_id)->avg('rental_rate');
-            return response()->json(['average_rental_rate' => $avg])->setStatusCode(Response::HTTP_OK);
-        } 
-        
-        catch (Exception $ex) {
             abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -92,7 +80,7 @@ class FilmController extends Controller
             $maxLength = $request->input('maxLength');
             $query->where('length', '<=', $maxLength);
         }
-        $films = $query->paginate(20);
+        $films = $query->paginate(FILMS_SEARCH_PAGINATION);
     return FilmResource::collection($films)->response()->setStatusCode(Response::HTTP_OK);
     } catch (Exception $ex) {
         abort(Response::HTTP_INTERNAL_SERVER_ERROR);
